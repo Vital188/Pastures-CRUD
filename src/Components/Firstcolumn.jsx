@@ -5,6 +5,8 @@ import { useEffect } from "react"
 import { create } from "../Functions/localStorage"
 import List from "./List"
 import { read } from "../Functions/localStorage"
+import { destroy } from "../Functions/localStorage"
+import Edit from "./Edit"
 
 const key = 'animal'
 
@@ -12,7 +14,9 @@ function Fisrtcolumn () {
 
 const [lastUpdate, setLastUpdate] = useState(Date.now());
 const [animal, setAnimal] = useState(null)
-const [createData, setCreateData] = useState(null)
+const [createData, setCreateData] = useState(null);
+const [deleteData, setDeleteData] = useState(null);
+const [modalData, setModalData] = useState(null);
 
 
 useEffect(() => {
@@ -27,15 +31,27 @@ useEffect(() => {
     setLastUpdate(Date.now())
   }, [createData]);
 
+  useEffect(() => {
+    if (null === deleteData) {
+      return;
+    }
+    destroy(key, deleteData.id);
+    setLastUpdate(Date.now());
+    // makeMsg('Oh no, movie (' + deleteData.title + ') gone!')
+  }, [deleteData]);
+
 return (
 
 
 <DataContext.Provider value={{
 setCreateData,
-animal
+animal,
+setDeleteData,
+modalData,
+setModalData
 }}>
-<div className="container">
-  <div className="row">
+<div className="container ">
+  <div className="row mt-3">
     <div className="col-6">
       <Create/>
     </div>
@@ -44,6 +60,7 @@ animal
         </div>
   </div>
 </div>
+<Edit/>
 </DataContext.Provider>
 )
 

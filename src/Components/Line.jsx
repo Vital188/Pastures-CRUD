@@ -1,8 +1,11 @@
+import { useContext } from "react";
+import { useState } from "react";
 import Animals from "../Data/Animals";
+import DataContext from "./DataContext";
 
 function Line({animal}) {
 
-    
+const {setDeleteData, setModalData} = useContext(DataContext);
 
     return (
         <li className="list-group-item">
@@ -16,8 +19,8 @@ function Line({animal}) {
                 </div>
             </div>
             <div className="animal__buttons">
-                <button  type="button" className="btn btn-outline-success">Edit</button>
-                <button  type="button" className="btn btn-outline-danger">Delete</button> 
+                <button  type="button" onClick={() => setModalData(animal)} className="btn btn-outline-success">Edit</button>
+                <button  type="button" onClick={() => setDeleteData(animal)} className="btn btn-outline-danger">Delete</button> 
             </div>
         </div>
     </li>

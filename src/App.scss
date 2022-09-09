@@ -1,5 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
+.container {
+    margin-top: 50px;
+}
+
 
 .animal {
     display: flex;
@@ -28,4 +32,9 @@
             margin-left: 5px;
         }
     }
+}
+
+.modal {
+    display: block;
+    background-color: #0000005f;
 }
