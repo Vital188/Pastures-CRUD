@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+.animal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__content {
+        display: flex;
+        &__name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        &__weight {
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-right: 10px;
+            color: skyblue;
+        }
+    }
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        button {
+            margin-left: 5px;
+        }
+    }
+}
