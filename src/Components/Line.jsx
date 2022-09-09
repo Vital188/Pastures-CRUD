@@ -19,7 +19,7 @@ const {setDeleteData, setModalData} = useContext(DataContext);
                 </div>
             </div>
             <div className="animal__buttons">
-                <button  type="button" onClick={() => setModalData(animal)} className="btn btn-outline-success">Edit</button>
+                <button  type="button" onClick={() => setModalData(animal)} className="btn btn-outline-success">Edit weight</button>
                 <button  type="button" onClick={() => setDeleteData(animal)} className="btn btn-outline-danger">Delete</button> 
             </div>
         </div>

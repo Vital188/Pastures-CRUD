@@ -7,6 +7,7 @@ import List from "./List"
 import { read } from "../Functions/localStorage"
 import { destroy } from "../Functions/localStorage"
 import Edit from "./Edit"
+import { update } from "../Functions/localStorage"
 
 const key = 'animal'
 
@@ -17,6 +18,7 @@ const [animal, setAnimal] = useState(null)
 const [createData, setCreateData] = useState(null);
 const [deleteData, setDeleteData] = useState(null);
 const [modalData, setModalData] = useState(null);
+const [editData, setEditData] = useState(null);
 
 
 useEffect(() => {
@@ -40,6 +42,15 @@ useEffect(() => {
     // makeMsg('Oh no, movie (' + deleteData.title + ') gone!')
   }, [deleteData]);
 
+  // EDIT
+  useEffect(() => {
+    if (null === editData) {
+      return;
+    }
+    update(key, editData, editData.id);
+    setLastUpdate(Date.now())
+  }, [editData]);
+
 return (
 
 
@@ -48,7 +59,8 @@ setCreateData,
 animal,
 setDeleteData,
 modalData,
-setModalData
+setModalData,
+setEditData
 }}>
 <div className="container ">
   <div className="row mt-3">
