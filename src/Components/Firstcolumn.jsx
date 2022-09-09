@@ -10,6 +10,7 @@ import Edit from "./Edit"
 import { update } from "../Functions/localStorage"
 import Messages from "./Messages"
 import { v4 as uuidv4 } from 'uuid';
+import Delete from "./Delete"
 
 const key = 'animal'
 
@@ -20,6 +21,7 @@ const [animal, setAnimal] = useState(null)
 const [createData, setCreateData] = useState(null);
 const [deleteData, setDeleteData] = useState(null);
 const [modalData, setModalData] = useState(null);
+const [modalDelData, setModalDelData] = useState(null);
 const [editData, setEditData] = useState(null);
 const [msgs, setMsgs] = useState([]);
 
@@ -79,7 +81,9 @@ modalData,
 setModalData,
 setEditData,
 msgs,
- setMsgs
+setMsgs,
+modalDelData,
+setModalDelData
 }}>
 <div className="container ">
   <div className="row mt-3">
@@ -93,6 +97,7 @@ msgs,
 </div>
 <Edit/>
 <Messages/>
+<Delete />
 </DataContext.Provider>
 )
 
