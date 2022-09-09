@@ -19,7 +19,7 @@ function Create() {
 
   return (
     <div className="card m-4">
-      <h5 className="card-header">Animals weight</h5>
+      <h5 className="card-header">Animals </h5>
       <div className="card-body">
         <label className="form-label fw-bold">Animals</label>
         <select

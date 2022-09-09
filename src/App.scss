@@ -38,3 +38,13 @@
     display: block;
     background-color: #0000005f;
 }
+
+.msg-bin {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    .toast {
+        display: block;
+        margin: 10px;
+    }
+}

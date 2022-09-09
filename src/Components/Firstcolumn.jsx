@@ -8,6 +8,8 @@ import { read } from "../Functions/localStorage"
 import { destroy } from "../Functions/localStorage"
 import Edit from "./Edit"
 import { update } from "../Functions/localStorage"
+import Messages from "./Messages"
+import { v4 as uuidv4 } from 'uuid';
 
 const key = 'animal'
 
@@ -19,6 +21,8 @@ const [createData, setCreateData] = useState(null);
 const [deleteData, setDeleteData] = useState(null);
 const [modalData, setModalData] = useState(null);
 const [editData, setEditData] = useState(null);
+const [msgs, setMsgs] = useState([]);
+
 
 
 useEffect(() => {
@@ -31,6 +35,7 @@ useEffect(() => {
     }
     create(key, createData);
     setLastUpdate(Date.now())
+    makeMsg('You add new animal to the pasture!')
   }, [createData]);
 
   useEffect(() => {
@@ -39,7 +44,7 @@ useEffect(() => {
     }
     destroy(key, deleteData.id);
     setLastUpdate(Date.now());
-    // makeMsg('Oh no, movie (' + deleteData.title + ') gone!')
+    makeMsg('You remove animal from the pasture')
   }, [deleteData]);
 
   // EDIT
@@ -51,6 +56,18 @@ useEffect(() => {
     setLastUpdate(Date.now())
   }, [editData]);
 
+  const makeMsg = text => {
+
+    const msg = {
+      id: uuidv4(),
+      text
+    }
+    setMsgs(m => [...m, msg]);
+    setTimeout(() => {
+      setMsgs(m => m.filter(mes => mes.id !== msg.id));
+    }, 3000);
+  }
+
 return (
 
 
@@ -60,7 +77,9 @@ animal,
 setDeleteData,
 modalData,
 setModalData,
-setEditData
+setEditData,
+msgs,
+ setMsgs
 }}>
 <div className="container ">
   <div className="row mt-3">
@@ -73,6 +92,7 @@ setEditData
   </div>
 </div>
 <Edit/>
+<Messages/>
 </DataContext.Provider>
 )
 
