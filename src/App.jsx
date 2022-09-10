@@ -6,7 +6,7 @@
 
 import './App.scss';
 import Fisrtcolumn from './Components/Firstcolumn';
-import Secondcolumn from './Components/Secondcolumn'
+
 
 function App() {
   return (
