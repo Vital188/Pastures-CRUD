@@ -39,7 +39,7 @@ function Create() {
         </select>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label fw-bold">
-            Write weight (grams):
+            Write weight (kilograms):
           </label>
           <input
             type="number"
